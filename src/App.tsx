@@ -71,10 +71,10 @@ export default function App() {
 
       <main className="mx-auto max-w-7xl px-6 py-8 space-y-6">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight text-slate-900">
+          <h1 className="text-xl font-semibold tracking-tight text-fg">
             대시보드
           </h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-fg-muted">
             오늘 처리해야 할 엠바고를 한눈에 확인하고 상태를 관리합니다.
           </p>
         </div>
@@ -88,11 +88,11 @@ export default function App() {
         />
 
         {error && (
-          <div className="bg-red-50 ring-1 ring-red-100 text-red-700 text-sm rounded-xl px-4 py-3 flex items-center justify-between">
+          <div className="bg-rose-500/10 ring-1 ring-rose-500/25 text-rose-300 text-sm rounded-xl px-4 py-3 flex items-center justify-between">
             <span>오류: {error}</span>
             <button
               onClick={() => void refetch()}
-              className="text-red-700 underline-offset-2 hover:underline text-sm"
+              className="text-rose-200 underline-offset-2 hover:underline text-sm"
             >
               다시 시도
             </button>
@@ -112,7 +112,7 @@ export default function App() {
           }
         />
 
-        <div className="text-xs text-slate-400 text-center pt-4">
+        <div className="text-xs text-fg-subtle text-center pt-4">
           총 {filtered.length} 건 / 전체 {rows.length} 건
         </div>
       </main>

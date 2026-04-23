@@ -19,11 +19,11 @@ export function EmbargoTable(props: Props) {
   if (rows.length === 0) return <Empty />;
 
   return (
-    <section className="bg-white rounded-2xl ring-1 ring-slate-200/70 shadow-sm overflow-hidden">
+    <section className="bg-surface rounded-2xl ring-1 ring-border-subtle overflow-hidden">
       <div className="hidden md:block overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
-            <tr className="text-left text-[11px] font-medium uppercase tracking-wider text-slate-500 bg-slate-50/60">
+            <tr className="text-left text-[11px] font-medium uppercase tracking-wider text-fg-subtle bg-surface-hover/60">
               <th className="px-5 py-3">제목</th>
               <th className="px-5 py-3 whitespace-nowrap">엠바고 일시</th>
               <th className="px-5 py-3">상태</th>
@@ -32,14 +32,14 @@ export function EmbargoTable(props: Props) {
               <th className="px-5 py-3 text-right">액션</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100">
+          <tbody className="divide-y divide-border-subtle">
             {rows.map((r) => (
               <DesktopRow key={r.id} row={r} {...props} />
             ))}
           </tbody>
         </table>
       </div>
-      <ul className="md:hidden divide-y divide-slate-100">
+      <ul className="md:hidden divide-y divide-border-subtle">
         {rows.map((r) => (
           <MobileCard key={r.id} row={r} {...props} />
         ))}
@@ -58,19 +58,19 @@ function DesktopRow({
   const upcoming = isWithinNext24h(row.embargo_at);
   return (
     <tr
-      className={`group hover:bg-slate-50/70 transition-colors ${
+      className={`group hover:bg-surface-hover transition-colors ${
         upcoming ? "border-l-4 border-l-amber-400" : "border-l-4 border-l-transparent"
       }`}
     >
       <td className="px-5 py-3.5">
-        <div className="font-medium text-slate-900 leading-snug">{row.title}</div>
+        <div className="font-medium text-fg leading-snug">{row.title}</div>
         {row.description && (
-          <div className="mt-0.5 text-[12px] text-slate-500 line-clamp-1">
+          <div className="mt-0.5 text-[12px] text-fg-muted line-clamp-1">
             {row.description}
           </div>
         )}
       </td>
-      <td className="px-5 py-3.5 whitespace-nowrap text-slate-600 tabular-nums">
+      <td className="px-5 py-3.5 whitespace-nowrap text-fg-muted tabular-nums">
         {formatEmbargoAt(row.embargo_at)}
       </td>
       <td className="px-5 py-3.5">
@@ -87,11 +87,11 @@ function DesktopRow({
       </td>
       <td className="px-5 py-3.5">
         {row.tag ? (
-          <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-slate-100 text-slate-700">
+          <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-surface-hover text-fg-muted ring-1 ring-border-subtle">
             {row.tag}
           </span>
         ) : (
-          <span className="text-slate-300 text-xs">—</span>
+          <span className="text-fg-subtle text-xs">—</span>
         )}
       </td>
       <td className="px-5 py-3.5">
@@ -99,7 +99,7 @@ function DesktopRow({
           <button
             type="button"
             onClick={() => onEdit(row)}
-            className="p-1.5 rounded-md text-slate-500 hover:bg-slate-100 hover:text-slate-900"
+            className="p-1.5 rounded-md text-fg-muted hover:bg-elevated hover:text-fg"
             aria-label="수정"
           >
             <Pencil className="w-3.5 h-3.5" />
@@ -107,7 +107,7 @@ function DesktopRow({
           <button
             type="button"
             onClick={() => onDelete(row)}
-            className="p-1.5 rounded-md text-slate-500 hover:bg-red-50 hover:text-red-600"
+            className="p-1.5 rounded-md text-fg-muted hover:bg-rose-500/10 hover:text-rose-300"
             aria-label="삭제"
           >
             <Trash2 className="w-3.5 h-3.5" />
@@ -134,12 +134,12 @@ function MobileCard({
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <div className="font-medium text-slate-900 leading-snug">{row.title}</div>
-          <div className="mt-0.5 text-[12px] text-slate-500 tabular-nums">
+          <div className="font-medium text-fg leading-snug">{row.title}</div>
+          <div className="mt-0.5 text-[12px] text-fg-muted tabular-nums">
             {formatEmbargoAt(row.embargo_at)}
           </div>
           {row.description && (
-            <div className="mt-2 text-[12.5px] text-slate-600 line-clamp-2">
+            <div className="mt-2 text-[12.5px] text-fg-muted line-clamp-2">
               {row.description}
             </div>
           )}
@@ -148,7 +148,7 @@ function MobileCard({
           <button
             type="button"
             onClick={() => onEdit(row)}
-            className="p-1.5 rounded-md text-slate-500 hover:bg-slate-100"
+            className="p-1.5 rounded-md text-fg-muted hover:bg-surface-hover hover:text-fg"
             aria-label="수정"
           >
             <Pencil className="w-3.5 h-3.5" />
@@ -156,7 +156,7 @@ function MobileCard({
           <button
             type="button"
             onClick={() => onDelete(row)}
-            className="p-1.5 rounded-md text-slate-500 hover:bg-red-50 hover:text-red-600"
+            className="p-1.5 rounded-md text-fg-muted hover:bg-rose-500/10 hover:text-rose-300"
             aria-label="삭제"
           >
             <Trash2 className="w-3.5 h-3.5" />
@@ -174,7 +174,7 @@ function MobileCard({
           showLabel
         />
         {row.tag && (
-          <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-slate-100 text-slate-700">
+          <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-surface-hover text-fg-muted ring-1 ring-border-subtle">
             {row.tag}
           </span>
         )}
@@ -198,13 +198,13 @@ function PdfCheckbox({
         type="checkbox"
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
-        className="appearance-none w-4 h-4 rounded border border-slate-300 bg-white checked:bg-slate-900 checked:border-slate-900 transition-colors relative
+        className="appearance-none w-4 h-4 rounded border border-border-strong bg-surface-hover checked:bg-indigo-500 checked:border-indigo-500 transition-colors relative
                    checked:before:content-[''] checked:before:absolute checked:before:left-1/2 checked:before:top-1/2 checked:before:-translate-x-1/2 checked:before:-translate-y-1/2 checked:before:w-2 checked:before:h-2 checked:before:bg-white checked:before:[clip-path:polygon(14%_44%,0_65%,50%_100%,100%_16%,80%_0,43%_62%)]
-                   focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/30"
+                   focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
         aria-label={showLabel ? undefined : "PDF 발송 여부"}
       />
       {showLabel && (
-        <span className={checked ? "text-slate-700" : "text-slate-400"}>
+        <span className={checked ? "text-fg" : "text-fg-subtle"}>
           PDF {checked ? "발송됨" : "미발송"}
         </span>
       )}
@@ -214,11 +214,11 @@ function PdfCheckbox({
 
 function Skeleton() {
   return (
-    <section className="bg-white rounded-2xl ring-1 ring-slate-200/70 shadow-sm p-6 space-y-3">
+    <section className="bg-surface rounded-2xl ring-1 ring-border-subtle p-6 space-y-3">
       {Array.from({ length: 5 }).map((_, i) => (
         <div
           key={i}
-          className="h-12 rounded-lg bg-slate-100 animate-pulse"
+          className="h-12 rounded-lg bg-surface-hover animate-pulse"
           aria-hidden
         />
       ))}
@@ -228,14 +228,14 @@ function Skeleton() {
 
 function Empty() {
   return (
-    <section className="bg-white rounded-2xl ring-1 ring-slate-200/70 shadow-sm p-12 flex flex-col items-center text-center">
-      <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
+    <section className="bg-surface rounded-2xl ring-1 ring-border-subtle p-12 flex flex-col items-center text-center">
+      <div className="w-12 h-12 rounded-full bg-surface-hover flex items-center justify-center text-fg-muted">
         <Inbox className="w-5 h-5" />
       </div>
-      <div className="mt-3 text-sm font-medium text-slate-700">
+      <div className="mt-3 text-sm font-medium text-fg">
         조건에 맞는 엠바고가 없어요
       </div>
-      <div className="mt-1 text-xs text-slate-500">
+      <div className="mt-1 text-xs text-fg-muted">
         필터를 조정하거나 신규 요청을 만들어 보세요.
       </div>
     </section>

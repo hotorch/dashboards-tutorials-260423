@@ -67,7 +67,7 @@ export function Modal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/40 backdrop-blur-sm animate-[fadeIn_120ms_ease-out]"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-[4px] animate-[fadeIn_120ms_ease-out]"
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -77,24 +77,24 @@ export function Modal({
     >
       <div
         ref={dialogRef}
-        className={`bg-white w-full ${widthClassName} rounded-2xl shadow-xl ring-1 ring-slate-200/70 flex flex-col max-h-[90vh]`}
+        className={`bg-elevated w-full ${widthClassName} rounded-2xl shadow-[0_12px_32px_rgba(0,0,0,0.6)] ring-1 ring-border-subtle flex flex-col max-h-[90vh]`}
       >
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-          <h2 className="text-base font-semibold tracking-tight text-slate-900">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-border-subtle">
+          <h2 className="text-base font-semibold tracking-tight text-fg">
             {title}
           </h2>
           <button
             type="button"
             onClick={onClose}
             aria-label="닫기"
-            className="p-1.5 rounded-md text-slate-500 hover:bg-slate-100 hover:text-slate-700 transition-colors"
+            className="p-1.5 rounded-md text-fg-muted hover:bg-surface-hover hover:text-fg transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
         <div className="px-6 py-5 overflow-y-auto">{children}</div>
         {footer && (
-          <div className="px-6 py-4 border-t border-slate-100 flex justify-end gap-2">
+          <div className="px-6 py-4 border-t border-border-subtle flex justify-end gap-2">
             {footer}
           </div>
         )}

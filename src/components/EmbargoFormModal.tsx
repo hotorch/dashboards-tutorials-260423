@@ -118,7 +118,7 @@ export function EmbargoFormModal({ open, initial, onClose, onSubmit }: Props) {
             value={form.title}
             onChange={(e) => setForm({ ...form, title: e.target.value })}
             placeholder="예: 삼성전자 1분기 실적 발표"
-            className="w-full h-10 px-3 rounded-lg ring-1 ring-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-900/30 transition-shadow"
+            className="w-full h-10 px-3 rounded-lg ring-1 ring-border-subtle bg-surface text-fg placeholder:text-fg-subtle focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-shadow"
             required
             maxLength={200}
           />
@@ -130,7 +130,7 @@ export function EmbargoFormModal({ open, initial, onClose, onSubmit }: Props) {
             onChange={(e) => setForm({ ...form, description: e.target.value })}
             placeholder="요청 배경, 처리 시 유의사항 등"
             rows={3}
-            className="w-full px-3 py-2 rounded-lg ring-1 ring-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-900/30 resize-none transition-shadow"
+            className="w-full px-3 py-2 rounded-lg ring-1 ring-border-subtle bg-surface text-fg placeholder:text-fg-subtle focus:outline-none focus:ring-2 focus:ring-indigo-500/50 resize-none transition-shadow"
           />
         </Field>
 
@@ -142,7 +142,7 @@ export function EmbargoFormModal({ open, initial, onClose, onSubmit }: Props) {
               onChange={(e) =>
                 setForm({ ...form, embargo_at: e.target.value })
               }
-              className="w-full h-10 px-3 rounded-lg ring-1 ring-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-900/30"
+              className="w-full h-10 px-3 rounded-lg ring-1 ring-border-subtle bg-surface text-fg focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
               required
             />
           </Field>
@@ -154,7 +154,7 @@ export function EmbargoFormModal({ open, initial, onClose, onSubmit }: Props) {
                 onChange={(e) =>
                   setForm({ ...form, status: e.target.value as EmbargoStatus })
                 }
-                className="w-full h-10 px-3 rounded-lg ring-1 ring-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-slate-900/30"
+                className="w-full h-10 px-3 rounded-lg ring-1 ring-border-subtle bg-surface text-fg focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
               >
                 {STATUS_OPTIONS.map((o) => (
                   <option key={o.value} value={o.value}>
@@ -173,28 +173,28 @@ export function EmbargoFormModal({ open, initial, onClose, onSubmit }: Props) {
               value={form.tag}
               onChange={(e) => setForm({ ...form, tag: e.target.value })}
               placeholder="예: 실적, 신차, 반도체"
-              className="w-full h-10 px-3 rounded-lg ring-1 ring-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-900/30"
+              className="w-full h-10 px-3 rounded-lg ring-1 ring-border-subtle bg-surface text-fg placeholder:text-fg-subtle focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
               maxLength={40}
             />
           </Field>
 
           <Field label="PDF 발송">
-            <label className="h-10 flex items-center gap-2 px-3 rounded-lg ring-1 ring-slate-200 bg-white cursor-pointer">
+            <label className="h-10 flex items-center gap-2 px-3 rounded-lg ring-1 ring-border-subtle bg-surface cursor-pointer">
               <input
                 type="checkbox"
                 checked={form.pdf_sent}
                 onChange={(e) =>
                   setForm({ ...form, pdf_sent: e.target.checked })
                 }
-                className="w-4 h-4 accent-slate-900"
+                className="w-4 h-4 accent-indigo-500"
               />
-              <span className="text-sm text-slate-700">발송 완료</span>
+              <span className="text-sm text-fg-muted">발송 완료</span>
             </label>
           </Field>
         </div>
 
         {error && (
-          <div className="text-sm text-red-600 bg-red-50 ring-1 ring-red-100 px-3 py-2 rounded-lg">
+          <div className="text-sm text-rose-300 bg-rose-500/10 ring-1 ring-rose-500/25 px-3 py-2 rounded-lg">
             {error}
           </div>
         )}
@@ -214,9 +214,9 @@ function Field({
 }) {
   return (
     <label className="block">
-      <div className="mb-1.5 text-xs font-medium text-slate-600">
+      <div className="mb-1.5 text-xs font-medium text-fg-muted">
         {label}
-        {required && <span className="ml-0.5 text-red-500">*</span>}
+        {required && <span className="ml-0.5 text-rose-400">*</span>}
       </div>
       {children}
     </label>

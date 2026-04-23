@@ -4,11 +4,26 @@
   --font-sans:
     "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
     "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --color-brand-50: oklch(0.97 0.013 286);
-  --color-brand-100: oklch(0.93 0.03 286);
-  --color-brand-500: oklch(0.585 0.22 282);
-  --color-brand-600: oklch(0.52 0.22 282);
-  --color-brand-700: oklch(0.45 0.2 282);
+
+  /* Surfaces (design-reference §2.1) */
+  --color-base: #0b0b0f;
+  --color-surface: #12121a;
+  --color-surface-hover: #1a1a24;
+  --color-elevated: #1e1e28;
+
+  /* Borders (§2.3) */
+  --color-border-subtle: #27272f;
+  --color-border-strong: #3f3f46;
+
+  /* Text (§2.3) */
+  --color-fg: #f4f4f5;
+  --color-fg-muted: #a1a1aa;
+  --color-fg-subtle: #71717a;
+
+  /* Primary – Indigo (§2.2) */
+  --color-primary-300: #a5a8f8;
+  --color-primary-500: #6366f1;
+  --color-primary-600: #4f46e5;
 }
 
 @layer base {
@@ -20,18 +35,27 @@
   body {
     font-family: var(--font-sans);
     font-feature-settings: "ss06", "tnum";
-    color: var(--color-slate-900);
-    background-color: var(--color-slate-50);
+    color: var(--color-fg);
+    background-color: var(--color-base);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
   button {
     font-family: inherit;
   }
+
+  /* Dark-mode form controls */
+  input[type="date"],
+  input[type="datetime-local"] {
+    color-scheme: dark;
+  }
 }
 
 @layer utilities {
   .scrollbar-thin {
     scrollbar-width: thin;
+  }
+  .glow-primary {
+    box-shadow: 0 0 24px rgba(99, 102, 241, 0.25);
   }
 }

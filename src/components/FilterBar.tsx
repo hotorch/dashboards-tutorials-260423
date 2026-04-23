@@ -34,7 +34,7 @@ export function FilterBar({ filters, onChange, availableTags }: Props) {
   };
 
   return (
-    <section className="bg-white rounded-2xl ring-1 ring-slate-200/70 shadow-sm p-4">
+    <section className="bg-surface rounded-2xl ring-1 ring-border-subtle p-4">
       <div className="flex flex-wrap items-start gap-x-6 gap-y-4">
         <FilterGroup label="기간" icon={<Calendar className="w-3.5 h-3.5" />}>
           <div className="flex flex-wrap gap-1.5">
@@ -47,8 +47,8 @@ export function FilterBar({ filters, onChange, availableTags }: Props) {
                   onClick={() => setPreset(p)}
                   className={`h-8 px-3 rounded-lg text-sm font-medium transition-colors ${
                     active
-                      ? "bg-slate-900 text-white"
-                      : "bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                      ? "bg-indigo-500/15 text-indigo-300 ring-1 ring-indigo-500/35"
+                      : "bg-surface-hover text-fg-muted hover:bg-elevated hover:text-fg"
                   }`}
                   aria-pressed={active}
                 >
@@ -65,17 +65,17 @@ export function FilterBar({ filters, onChange, availableTags }: Props) {
                 onChange={(e) =>
                   onChange({ ...filters, customFrom: e.target.value || null })
                 }
-                className="h-8 px-2 rounded-lg ring-1 ring-slate-200 bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-900/30"
+                className="h-8 px-2 rounded-lg ring-1 ring-border-subtle bg-surface-hover text-fg focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
                 aria-label="시작일"
               />
-              <span className="text-slate-400">→</span>
+              <span className="text-fg-subtle">→</span>
               <input
                 type="date"
                 value={filters.customTo ?? ""}
                 onChange={(e) =>
                   onChange({ ...filters, customTo: e.target.value || null })
                 }
-                className="h-8 px-2 rounded-lg ring-1 ring-slate-200 bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-900/30"
+                className="h-8 px-2 rounded-lg ring-1 ring-border-subtle bg-surface-hover text-fg focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
                 aria-label="종료일"
               />
             </div>
@@ -93,8 +93,8 @@ export function FilterBar({ filters, onChange, availableTags }: Props) {
                   onClick={() => toggleStatus(s)}
                   className={`h-8 px-3 rounded-lg text-sm font-medium transition-colors inline-flex items-center gap-1.5 ${
                     active
-                      ? "bg-slate-900 text-white"
-                      : "bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                      ? "bg-indigo-500/15 text-indigo-300 ring-1 ring-indigo-500/35"
+                      : "bg-surface-hover text-fg-muted hover:bg-elevated hover:text-fg"
                   }`}
                   aria-pressed={active}
                 >
@@ -114,7 +114,7 @@ export function FilterBar({ filters, onChange, availableTags }: Props) {
                 onChange={(e) =>
                   onChange({ ...filters, tag: e.target.value || null })
                 }
-                className="h-8 pl-3 pr-8 rounded-lg ring-1 ring-slate-200 bg-white text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-900/30"
+                className="h-8 pl-3 pr-8 rounded-lg ring-1 ring-border-subtle bg-surface-hover text-sm text-fg focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
               >
                 <option value="">전체</option>
                 {availableTags.map((t) => (
@@ -127,7 +127,7 @@ export function FilterBar({ filters, onChange, availableTags }: Props) {
                 <button
                   type="button"
                   onClick={() => onChange({ ...filters, tag: null })}
-                  className="h-8 px-2 inline-flex items-center text-slate-500 hover:text-slate-900"
+                  className="h-8 px-2 inline-flex items-center text-fg-muted hover:text-fg"
                   aria-label="태그 필터 초기화"
                 >
                   <X className="w-3.5 h-3.5" />
@@ -152,7 +152,7 @@ function FilterGroup({
 }) {
   return (
     <div className="min-w-0">
-      <div className="flex items-center gap-1.5 mb-2 text-[11px] font-medium uppercase tracking-wider text-slate-500">
+      <div className="flex items-center gap-1.5 mb-2 text-[11px] font-medium uppercase tracking-wider text-fg-subtle">
         {icon}
         {label}
       </div>
