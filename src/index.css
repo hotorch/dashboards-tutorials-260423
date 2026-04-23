@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans:
+    "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --color-brand-50: oklch(0.97 0.013 286);
+  --color-brand-100: oklch(0.93 0.03 286);
+  --color-brand-500: oklch(0.585 0.22 282);
+  --color-brand-600: oklch(0.52 0.22 282);
+  --color-brand-700: oklch(0.45 0.2 282);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "ss06", "tnum";
+    color: var(--color-slate-900);
+    background-color: var(--color-slate-50);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  button {
+    font-family: inherit;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+}
