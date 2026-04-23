@@ -7,14 +7,14 @@ export const STATUS_LABEL: Record<EmbargoStatus, string> = {
 };
 
 export const STATUS_DOT: Record<EmbargoStatus, string> = {
-  requested: "bg-slate-400",
-  in_progress: "bg-blue-500",
+  requested: "bg-red-500",
+  in_progress: "bg-amber-500",
   completed: "bg-emerald-500",
 };
 
 export const STATUS_BADGE: Record<EmbargoStatus, string> = {
-  requested: "bg-slate-100 text-slate-700 ring-slate-200",
-  in_progress: "bg-blue-50 text-blue-700 ring-blue-100",
+  requested: "bg-red-50 text-red-700 ring-red-100",
+  in_progress: "bg-amber-50 text-amber-700 ring-amber-100",
   completed: "bg-emerald-50 text-emerald-700 ring-emerald-100",
 };
 
